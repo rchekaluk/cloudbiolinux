@@ -11,7 +11,7 @@ bio_nextgen:
   alignment:
     - bowtie
     - gmap
-    - lastz
+    #- lastz No response: wget --continue --no-check-certificate -O lastz-1.02.00.tar.gz 'http://www.bx.psu.edu/miller_lab/dist/lastz-1.02.00.tar.gz'
     - mosaik
     # - perm # difficult build process with directory names
     - snap
