@@ -12,7 +12,7 @@ gems:
   - htmlentities
   - json
   - kwalify
-  - libxml-ruby
+  #- libxml-ruby https://github.com/xml4r/libxml-ruby/issues/105
   - uuidtools
   - xml-simple
   # science
