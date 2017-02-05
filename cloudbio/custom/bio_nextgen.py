@@ -291,19 +291,13 @@ def install_varianttools(env):
 @_if_not_installed("dwgsim")
 def install_dwgsim(env):
     """DWGSIM: simulating NGS data and evaluating mappings and variant calling.
-    http://sourceforge.net/apps/mediawiki/dnaa/index.php?title=Main_Page
+    https://github.com/nh13/DWGSIM
     """
-    version = "0.1.10"
-    samtools_version = "0.1.18"
-    url = "http://downloads.sourceforge.net/project/dnaa/dwgsim/" \
-          "dwgsim-{0}.tar.gz".format(version)
-    samtools_url = "http://downloads.sourceforge.net/project/samtools/samtools/" \
-                   "{ver}/samtools-{ver}.tar.bz2".format(ver=samtools_version)
+    repository = "git clone https://github.com/nh13/DWGSIM.git"
     def _get_samtools(env):
-        shared._remote_fetch(env, samtools_url)
-        env.safe_run("tar jxf samtools-{0}.tar.bz2".format(samtools_version))
-        env.safe_run("ln -s samtools-{0} samtools".format(samtools_version))
-    _get_install(url, env, _make_copy("ls -1 dwgsim dwgsim_eval scripts/dwgsim_pileup_eval.pl"),
+        env.safe_run("git submodule init")
+        env.safe_run("git submodule update")
+    _get_install(repository, env, _make_copy("ls -1 dwgsim dwgsim_eval scripts/dwgsim_pileup_eval.pl"),
                  post_unpack_fn=_get_samtools)
 
 @_if_not_installed("fastq_screen")
